@@ -11,62 +11,41 @@ Version: 1.0
 @import url("../seos-video/style.css");
 
   	#box_content{
-/*  		width: 59%;
-  		height: 800px;*/
 
-  		max-width: 900;
-  		background: #00ff0087;
-  		
-
-  		margin-top: 3px auto 3px;
-  		/*margin-left: 3px;*/
-
+  		background: #D2CBCB;
+  		margin: 3px auto 3px;
   		display: flex;
-  		justify-content: space-around;
-  		flex-wrap: wrap;
-  		/*float: left;*/
-  		/*display: inline-block;*/
+  		justify-content: center;
+
   	}
 
 
 	#left_sidebar {
 	    width: 20%;
 	    height: 800px;
-	    background: #33f;
+	    background: #C483FB;
 	    border: 1px solid #ccc;
-
 	    margin: 3px;
 	    padding: 7px;
-	    box-sizing: border-box;
-	    /*float: left;*/
-	    /*display: inline-block;*/
-
-
 	   
 	   }
 
 	#right_sidebar {
 	    width: 20%;
 	    height: 800px;
-	    background: #c30;
+	    background: #74FEDC;
 	    border: 1px solid #ccc;
-		
 	    margin: 3px;
 	    padding: 7px;
-	    box-sizing: border-box;
-	    /*float: left;*/
-		/*display: inline-block;*/
 
 	   }
 
 	  .entry-content{
+	  	background: #7CFAA8;
 	  	width: 59%;
 	  	border: 2px solid #300;
-
-
 	  	margin: 3px;
 	    padding: 7px;
-	    box-sizing: border-box;
 	  }
   		
 
