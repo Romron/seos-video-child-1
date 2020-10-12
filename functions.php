@@ -190,7 +190,10 @@ function template_type_posts( $template ) {
 
 }
 
-
+add_action('init', 'add_custom_fields');
+function add_custom_fields(){
+	add_post_type_support( 'films', 'custom-fields');
+}
 
 
 

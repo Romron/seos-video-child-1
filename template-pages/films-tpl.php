@@ -21,13 +21,15 @@
 
 		<div class="entry-content">
 			
-			<div id="box_trailer">box_trailer</div>
+			<div id="box_trailer">
+				<!-- box_trailer -->
+
+				<?php echo get_post_meta($post->ID, 'box_trailer_', true); ?>
+
+			</div>
 			<div id="box_annotation">box_annotation</div>
 			<div id="box_posters">box_posters</div>
-			<div id="box_player">box_player</div>
-			<div id="box_film_information">box_film_information</div>
-			<div id="box_comment">box_comment</div>
-
+			<div id="box_player">
 
 
 			<?php
@@ -42,7 +44,12 @@
 					'after'  => '</div>',
 				) );
 			?>
-		
+
+			</div>
+			<div id="box_film_information">box_film_information</div>
+			<div id="box_comment">box_comment</div>
+
+
 
 		</div><!-- .entry-content -->
 	
