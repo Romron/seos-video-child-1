@@ -20,30 +20,32 @@
 	</div>
 
 		<div class="entry-content">
-			
+		<?php $arr_Date_Film = get_post_meta( $post->ID ); ?>
 
+			<div id="box_title"> <h2 class="entry-title">'<?php  echo $arr_Date_Film['Title'][0]; ?> </h2></div>
 			<div id="box_posters">box_posters</div>
 			<div id="box_annotation">box_annotation</div>
 			<div id="box_player">
-
-
-			<?php
-				the_content( sprintf(
-					/* translators: %s: Name of current post. */
-					wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'seos-video' ), array( 'span' => array( 'class' => array() ) ) ),
-					the_title( '<span class="screen-reader-text">"', '"</span>', false )
-				) );
-
-				wp_link_pages( array(
-					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'seos-video' ),
-					'after'  => '</div>',
-				) );
-			?>
+				<?php
+					$plear_films = get_post_meta( $post->ID, $Id_kinopisk, true );
+					echo $plear_films['Id_kinopisk'][0];
+				?>
+			</div>
+			<div id="box_film_information">
+			
+				<p class="box-film-information">В ролях: </p><span><?php  echo $arr_Date_Film['Actors'][0]; ?></span>
+				<p class="box-film-information">Жанр:</p>	<span><?php  echo $arr_Date_Film['Genre'][0]; ?></span>
+				<p class="box-film-information">Режисёры:</p>	<span><?php  echo $arr_Date_Film['Director'][0]; ?></span>
+				<p class="box-film-information">Продюсеры:</p>	<span><?php  echo $arr_Date_Film['Producer'][0]; ?></span>
+				<p class="box-film-information">Год:</p>	<span><?php  echo $arr_Date_Film['ProductionYear'][0]; ?></span>
+				<p class="box-film-information">Сценарий:</p>	<span><?php  echo $arr_Date_Film['Scenario'][0]; ?></span>
+				<p class="box-film-information">Продолжительность:</p>	<span><?php  echo $arr_Date_Film['Duration'][0]; ?></span>
+				<p class="box-film-information">Премьера в мире:</p>	<span><?php  echo $arr_Date_Film['WorldPremiere'][0]; ?></span>
+				<p class="box-film-information">Страна:</p>	<span><?php  echo $arr_Date_Film['Country'][0]; ?></span>
+				<p class="box-film-information">Бюджет:</p>	<span><?php  echo $arr_Date_Film['CashFilm'][0]; ?></span>
 
 			</div>
-			<div id="box_film_information">box_film_information</div>
 			<div id="box_comment">box_comment</div>
-
 
 
 		</div><!-- .entry-content -->

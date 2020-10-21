@@ -7,6 +7,16 @@
 // }
 
 
+// Список таксономий:
+	// "ProductionYear"
+	// "Country"
+	// "Genre"
+	// "Actors"
+	// "Producer"
+	// "Scenario"
+	// "Director"
+	// "RatingIMDb"
+
 
 // Создаю типы постов 
 add_action( 'init', 'register_post_type_Films' ); // Использовать Фильм только внутри хука init
@@ -190,10 +200,38 @@ function template_type_posts( $template ) {
 
 }
 
-add_action('init', 'add_custom_fields');
-function add_custom_fields(){
-	add_post_type_support( 'films', 'custom-fields');
-}
+// регистрация сайдбаров
+// add_action( 'widgets_init', 'register_sidebars_addPF' );
+// function register_sidebars_addPF(){
+
+// 		$parameters_left_sidebar = array(
+// 			'id' => 'left_sidebar',
+// 			'name' => 'left-sidebar',
+// 			'description' => 'Данный сайдбар позволит добавить что-либо в левую колонку сайта.',
+// 			'before_widget' => '',
+// 			'after_widget' => '',
+// 			'before_title' => '',
+// 			'after_title' => ''
+// 			);
+
+// 		$parameters_right_sidebar = array(
+// 			'id' => 'right_sidebar',
+// 			'name' => 'right-sidebar',
+// 			'description' => 'Данный сайдбар позволит добавить что-либо в правую колонку сайта.',
+// 			'before_widget' => '',
+// 			'after_widget' => '',
+// 			'before_title' => '',
+// 			'after_title' => ''
+// 			);
+// 	register_sidebar($parameters_left_sidebar);
+// 	register_sidebar($parameters_right_sidebar);
+// }
+
+
+
+
+
+
 
 
 
