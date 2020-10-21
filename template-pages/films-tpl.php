@@ -33,16 +33,16 @@
 			</div>
 			<div id="box_film_information">
 			
-				<p class="box-film-information">В ролях: </p><span><?php  echo $arr_Date_Film['Actors'][0]; ?></span>
-				<p class="box-film-information">Жанр:</p>	<span><?php  echo $arr_Date_Film['Genre'][0]; ?></span>
-				<p class="box-film-information">Режисёры:</p>	<span><?php  echo $arr_Date_Film['Director'][0]; ?></span>
-				<p class="box-film-information">Продюсеры:</p>	<span><?php  echo $arr_Date_Film['Producer'][0]; ?></span>
-				<p class="box-film-information">Год:</p>	<span><?php  echo $arr_Date_Film['ProductionYear'][0]; ?></span>
-				<p class="box-film-information">Сценарий:</p>	<span><?php  echo $arr_Date_Film['Scenario'][0]; ?></span>
-				<p class="box-film-information">Продолжительность:</p>	<span><?php  echo $arr_Date_Film['Duration'][0]; ?></span>
-				<p class="box-film-information">Премьера в мире:</p>	<span><?php  echo $arr_Date_Film['WorldPremiere'][0]; ?></span>
-				<p class="box-film-information">Страна:</p>	<span><?php  echo $arr_Date_Film['Country'][0]; ?></span>
-				<p class="box-film-information">Бюджет:</p>	<span><?php  echo $arr_Date_Film['CashFilm'][0]; ?></span>
+				<div class="str_box"><p class="box-film-information">В ролях: </p><span><?php  echo $arr_Date_Film['Actors'][0]; ?></span></div>
+				<div class="str_box"><p class="box-film-information">Жанр:</p>	<span><?php  echo $arr_Date_Film['Genre'][0]; ?></span></div>
+				<div class="str_box"><p class="box-film-information">Режисёры:</p>	<span><?php  echo $arr_Date_Film['Director'][0]; ?></span></div>
+				<div class="str_box"><p class="box-film-information">Продюсеры:</p>	<span><?php  echo $arr_Date_Film['Producer'][0]; ?></span></div>
+				<div class="str_box"><p class="box-film-information">Год:</p>	<span><?php  echo $arr_Date_Film['ProductionYear'][0]; ?></span></div>
+				<div class="str_box"><p class="box-film-information">Сценарий:</p>	<span><?php  echo $arr_Date_Film['Scenario'][0]; ?></span></div>
+				<div class="str_box"><p class="box-film-information">Продолжительность:</p>	<span><?php  echo $arr_Date_Film['Duration'][0]; ?></span></div>
+				<div class="str_box"><p class="box-film-information">Премьера в мире:</p>	<span><?php  echo $arr_Date_Film['WorldPremiere'][0]; ?></span></div>
+				<div class="str_box"><p class="box-film-information">Страна:</p>	<span><?php  echo $arr_Date_Film['Country'][0]; ?></span></div>
+				<div class="str_box"><p class="box-film-information">Бюджет:</p>	<span><?php  echo $arr_Date_Film['CashFilm'][0]; ?></span></div>
 
 			</div>
 			<div id="box_comment">box_comment</div>

@@ -86,23 +86,28 @@ Version: 1.0
 	  	width:90%;
 	    margin: 20px auto ;
 	    /*overflow: hidden; */
-	    border: 1px solid #F7E909;
+	    /*border: 1px solid #F7E909;*/
 	    /*---------------------*/
-	    display: flex;
-	    flex-wrap: wrap;
-	    justify-content: space-around;
+
 
 
 	  }
 
+	  .str_box{
+	  	 /*border: 1px solid #FFFFFF;	*/
+	  	 /*margin: 4px; */
+	  	 display: flex; 	
+	  }
+
+
 	  p[class="box-film-information"]{
 	  	 color: #E7D8A3;
-	  	 border: 1px solid #558BDB; 
+	  	 /*border: 1px solid #558BDB; */
 	  	 /*width: 30%;*/
 	  	 /*margin: 2px;*/
 	  	 flex-basis:20%;
 	  	 /*---------------------*/
-	  	 /*flex-grow:1; */
+
 	  	 display: flex;
          align-items: center;
 
@@ -110,12 +115,12 @@ Version: 1.0
 
 	  span{
 	  	 color: #C1C1C1;
-	  	 border: 1px solid #558BDB;
+	  	 /*border: 1px solid #558BDB;*/
 	  	 /*width: 50%;*/
 	  	 /*margin: 2px;*/
 	  	 flex-basis:75%;
 	  	 /*---------------------*/
-	  	 /*flex-grow:4; */
+
 	  	 display: flex;
          align-items: center;
 
