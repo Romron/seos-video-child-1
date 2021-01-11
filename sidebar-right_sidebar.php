@@ -1,9 +1,9 @@
   <style>
 
-   #serch, #announcement_movies, #advertising_space_right{
+   #announcement_movies, #advertising_space_right{
    	background: #807480;
    	width: auto;
-   	height: 31%;
+   	height: 40%;
    	margin-bottom: 5px;
    	margin-top: auto;
    	margin-right: auto;
@@ -11,6 +11,12 @@
    	text-align: center;
    }
 
+   #serch{
+    height: 5%;
+    padding-top: 4%;
+    /*width: auto;*/
+    text-align: center;
+   }
 
   </style>
 
@@ -20,7 +26,12 @@
 
 
 	<div id="serch">
-		<h3>serch</h3>
+    <?php if ( is_active_sidebar( 'right_sidebar' ) ) : ?>
+    <?php dynamic_sidebar( 'right_sidebar' ); ?>
+    <?php endif; ?>
+
+
+
 	</div>
 	<div id="announcement_movies">
 		<h3>announcement_space</h3>

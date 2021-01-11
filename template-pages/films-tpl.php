@@ -20,15 +20,42 @@
 	</div>
 
 		<div class="entry-content">
-		<?php $arr_Date_Film = get_post_meta( $post->ID ); ?>
+		<?php 
+			$arr_Date_Film = get_post_meta( $post->ID );
+			$arr_media = get_attached_media('image');
+			
 
-			<div id="box_title"> <h2 class="entry-title">'<?php  echo $arr_Date_Film['Title'][0]; ?> </h2></div>
-			<div id="box_posters">box_posters</div>
+		?>
+
+			<div id="box_title"> <h2 class="entry-title"> <?php  echo $arr_Date_Film['Title'][0]; ?> </h2></div>
+			<div id="box_posters">
+				
+				<?php 
+					
+					$count_posters = 1;		// для ограничения кол-во выводимых постеров
+					
+
+					// echo '<pre>'; print_r($arr_media); echo '</pre>';
+
+					foreach ($arr_media as $key => $value) {
+						$count_posters ++;
+						// echo('<img src="'.$arr_media[$key]->guid.'" class="poster" alt="#" />');
+						echo('<img src="'.wp_get_attachment_image_url($arr_media[$key]->ID, 'size-for-posters').'" class="poster" alt="#" />');
+						if ($count_posters > 2) {
+							break;
+						}
+
+					
+					}
+
+				?>
+
+
+			</div>
 			<div id="box_annotation">box_annotation</div>
 			<div id="box_player">
 				<?php
-					$plear_films = get_post_meta( $post->ID, $Id_kinopisk, true );
-					echo $plear_films['Id_kinopisk'][0];
+					echo $arr_Date_Film['Plear_films'][0];
 				?>
 			</div>
 			<div id="box_film_information">
