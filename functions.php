@@ -285,7 +285,7 @@ function register_taxonomy_Genre(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -333,7 +333,7 @@ function register_taxonomy_ProductionYear(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -381,7 +381,7 @@ function register_taxonomy_Country(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -429,7 +429,7 @@ function register_taxonomy_Actors(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -477,7 +477,7 @@ function register_taxonomy_Producer(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -525,7 +525,7 @@ function register_taxonomy_Scenario(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -574,7 +574,7 @@ function register_taxonomy_Director(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
