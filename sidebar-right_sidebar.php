@@ -1,27 +1,4 @@
-  <style>
-
-   #announcement_movies, #advertising_space_right{
-   	background: #807480;
-   	width: auto;
-   	height: 40%;
-   	margin-bottom: 5px;
-   	margin-top: auto;
-   	margin-right: auto;
-   	margin-left: auto;
-   	text-align: center;
-   }
-
-   #serch{
-    height: 5%;
-    padding-top: 4%;
-    /*width: auto;*/
-    text-align: center;
-   }
-
-  </style>
-
-
-
+<!-- <link rel="stylesheet" href="style_sidebar.css"> -->
 
 
 
@@ -43,3 +20,4 @@
 
 
 
+<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
