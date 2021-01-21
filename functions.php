@@ -141,7 +141,7 @@ function register_post_type_Films(){
 	register_post_type('news', $args_News);
 }
 
-// Устанавливаю файл шаблона страницы для типов постов
+// Устанавливаю файл шаблона страницы 
 add_filter('template_include', 'template_type_posts');
 function template_type_posts( $template ) {
 	global $post;
@@ -187,6 +187,19 @@ function template_type_posts( $template ) {
 		}
 	}
 
+
+		if( is_search('serch')){
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/serch-tpl.php';
+			// проверяю существование файла шаблона
+			if(file_exists($path_tpl_file)) {
+				return $path_tpl_file;
+			}
+		}
+
+
+
+
+
 	return $template;
 
 }
@@ -220,8 +233,7 @@ function register_sidebars_addPF(){
 
 
 
-/*
-	Таксономии:
+/* Список аксономий:
 		"ProductionYear"
 		"Country"
 		"Genre"
@@ -230,7 +242,6 @@ function register_sidebars_addPF(){
 		"Scenario"
 		"Director"
 */
-
 
 //	добавление таксономий
 add_action( 'init', 'register_taxonomy_Genre' );
@@ -521,7 +532,6 @@ function register_taxonomy_Scenario(){
 		register_taxonomy('Scenario', array('films','posters'), $args);
 	}
 
-
 add_action( 'init', 'register_taxonomy_Director' );
 function register_taxonomy_Director(){
 	    $labels = array(
@@ -570,28 +580,31 @@ function register_taxonomy_Director(){
 		register_taxonomy('Director', array('films','posters'), $args);
 	}
 
-
+// подключаю ещё один файл стилей
+add_action( 'wp_enqueue_scripts', 'add_file_style');
+function add_file_style() {
+	wp_enqueue_style( 'style-sidebar', get_stylesheet_directory_uri().'/style-sidebar.css');
+}
 
 //==========================================================================================
 //		====================	ЧЕРНОВИК	=======================================
 
 
 
-
-
-// правильный способ подключить стили и скрипты
-add_action( 'wp_enqueue_scripts', 'theme_name_scripts_1');
-// add_action('wp_print_styles', 'theme_name_scripts'); // можно использовать этот хук он более поздний
-function theme_name_scripts_1() {
-	wp_enqueue_style( 'style-sidebar', get_stylesheet_directory_uri().'/style-sidebar.css');
-}
+// Регистрирую файл шаблона для поиска
 
 
 
-
-
-
-
+	// add_filter( 'template_include', 'add_template_serch');
+	// function add_template_serch( $templates ) {
+	// 	if( is_search('serch')){
+	// 		$path_tpl_file = get_stylesheet_directory() . '/template-pages/serch-tpl.php';
+	// 		// проверяю существование файла шаблона
+	// 		if(file_exists($path_tpl_file)) {
+	// 			return $path_tpl_file;
+	// 		}
+	// 	}
+	// }
 
 
 
