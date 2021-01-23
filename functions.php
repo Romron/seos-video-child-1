@@ -196,6 +196,14 @@ function template_type_posts( $template ) {
 			}
 		}
 
+		if( is_front_page()){
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/page.php';
+			// проверяю существование файла шаблона
+			if(file_exists($path_tpl_file)) {
+				return $path_tpl_file;
+			}
+		}
+
 
 
 
