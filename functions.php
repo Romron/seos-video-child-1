@@ -197,7 +197,7 @@ function template_type_posts( $template ) {
 		}
 
 		if( is_front_page()){
-			$path_tpl_file = get_stylesheet_directory() . '/template-pages/page.php';
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/page-tpl.php';
 			// проверяю существование файла шаблона
 			if(file_exists($path_tpl_file)) {
 				return $path_tpl_file;
@@ -588,11 +588,42 @@ function register_taxonomy_Director(){
 		register_taxonomy('Director', array('films','posters'), $args);
 	}
 
-// подключаю ещё один файл стилей
-add_action( 'wp_enqueue_scripts', 'add_file_style');
-function add_file_style() {
-	wp_enqueue_style( 'style-sidebar', get_stylesheet_directory_uri().'/style-sidebar.css');
+// выбор картинки поста на главную страницу
+function get_rnd_img_post($post){
+	/*
+		получает объект post
+		возвращает:
+			если у поста нет картинки false
+			если у поста одна картинка ссылку на эту картинку
+			если у поста несколько картинок ссылку на случайную
+	*/
+
+	$arr_media = get_attached_media('image',$post->ID);
+	$num_img = 0;
+	foreach ($arr_media as $id_attach => $arr_date_attach) { 
+		$num_img++;
+		if (count($arr_media) == 0) {
+			$result_str = false;
+			break;
+		}
+		elseif (count($arr_media) == 1) {
+			// echo('<img src="' . wp_get_attachment_image_url($arr_date_attach->ID,'size-for-posters') . '" alt="">');
+			$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'size-for-posters');
+			break;
+		}else{
+			if ($num_img == rand(0, count($arr_media))) {
+				$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'size-for-posters');
+				break;
+			}elseif ($num_img >= count($arr_media)) {
+				$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'size-for-posters');
+				break;
+			}
+		}
+	}
+	return $result_str;
 }
+
+
 
 //==========================================================================================
 //		====================	ЧЕРНОВИК	=======================================
@@ -621,10 +652,20 @@ function add_file_style() {
 
 // 
 // Регестрирую новые размеры картинок
-add_image_size( 'size-for-posters', 240, 300 );	// регестрирую новый размер для ростеров
+// add_image_size( 'size-for-posters', 240, 300 );	// регестрирую новый размер для ростеров
 
 
 
+// подключаю файлы стилей для ускорения загрузки сайта принялрешение все стили в один файл
+// add_action( 'wp_enqueue_scripts', 'add_file_style');
+// function add_file_style() {
+// 	wp_enqueue_style( 'style-sidebar', get_stylesheet_directory_uri().'/styles/style-sidebar.css');
+
+// 	if( is_front_page()){	
+// 		wp_enqueue_style( 'style-page', get_stylesheet_directory_uri().'/styles/style-page.css');
+// 	}
+
+// }
 
 
 
