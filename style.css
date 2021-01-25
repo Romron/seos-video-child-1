@@ -28,7 +28,7 @@ Version: 1.0
   	#box_content{
 
   		/*background: #D2CBCB;*/
-  		/*border: 1px solid #558BDB;*/
+  		border: 1px solid #558BDB;
   		display: flex;
   		justify-content: center;
   	}

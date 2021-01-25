@@ -146,46 +146,46 @@ add_filter('template_include', 'template_type_posts');
 function template_type_posts( $template ) {
 	global $post;
 
-	# шаблон для записи по типу
-	if( $post->post_type == 'films' ){
-		$path_tpl_file = get_stylesheet_directory() . '/template-pages/films-tpl.php';
-		// проверяю существование файла шаблона
-		if(file_exists($path_tpl_file)) {
-			return $path_tpl_file;
+	// шаблон для записи по типу
+		if( $post->post_type == 'films' ){
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/films-tpl.php';
+			// проверяю существование файла шаблона
+			if(file_exists($path_tpl_file)) {
+				return $path_tpl_file;
+			}
 		}
-	}
 
-	if( $post->post_type == 'posters' ){
-		$path_tpl_file = get_stylesheet_directory() . '/template-pages/posters-tpl.php';
-		// проверяю существование файла шаблона
-		if(file_exists($path_tpl_file)) {
-			return $path_tpl_file;
+		if( $post->post_type == 'posters' ){
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/posters-tpl.php';
+			// проверяю существование файла шаблона
+			if(file_exists($path_tpl_file)) {
+				return $path_tpl_file;
+			}
 		}
-	}
 
-	if( $post->post_type == 'acters' ){
-		$path_tpl_file = get_stylesheet_directory() . '/template-pages/acters-tpl.php';
-		// проверяю существование файла шаблона
-		if(file_exists($path_tpl_file)) {
-			return $path_tpl_file;
+		if( $post->post_type == 'acters' ){
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/acters-tpl.php';
+			// проверяю существование файла шаблона
+			if(file_exists($path_tpl_file)) {
+				return $path_tpl_file;
+			}
 		}
-	}
 
-	if( $post->post_type == 'announcement' ){
-		$path_tpl_file = get_stylesheet_directory() . '/template-pages/announcement-tpl.php';
-		// проверяю существование файла шаблона
-		if(file_exists($path_tpl_file)) {
-			return $path_tpl_file;
+		if( $post->post_type == 'announcement' ){
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/announcement-tpl.php';
+			// проверяю существование файла шаблона
+			if(file_exists($path_tpl_file)) {
+				return $path_tpl_file;
+			}
 		}
-	}
 
-	if( $post->post_type == 'news' ){
-		$path_tpl_file = get_stylesheet_directory() . '/template-pages/news-tpl.php';
-		// проверяю существование файла шаблона
-		if(file_exists($path_tpl_file)) {
-			return $path_tpl_file;
+		if( $post->post_type == 'news' ){
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/news-tpl.php';
+			// проверяю существование файла шаблона
+			if(file_exists($path_tpl_file)) {
+				return $path_tpl_file;
+			}
 		}
-	}
 
 
 		if( is_search('serch')){
@@ -195,6 +195,20 @@ function template_type_posts( $template ) {
 				return $path_tpl_file;
 			}
 		}
+
+	// шаблон для страниц:
+		if( is_front_page()){
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/page.php';
+			
+			echo '<pre>'; print_r('is_front_page'); echo '</pre>';
+
+
+			// проверяю существование файла шаблона
+			if(file_exists($path_tpl_file)) {
+				return $path_tpl_file;
+			}
+		}
+
 
 
 
