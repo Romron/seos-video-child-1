@@ -578,6 +578,9 @@ function register_taxonomy_Director(){
 		register_taxonomy('Director', array('films','posters'), $args);
 }
 
+
+
+
 // выбор картинки поста на главную страницу
 function get_rnd_img_post($post){
 	/*
@@ -597,14 +600,14 @@ function get_rnd_img_post($post){
 			break;
 		}elseif (count($arr_media) == 1) {
 			// echo('<img src="' . wp_get_attachment_image_url($arr_date_attach->ID,'size-for-posters') . '" alt="">');
-			$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'size-for-posters');
+			$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'thumbnail');
 			break;
 		}else{
 			if ($num_img == rand(0, count($arr_media))) {
-				$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'size-for-posters');
+				$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'thumbnail');
 				break;
 			}elseif ($num_img >= count($arr_media)) {
-				$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'size-for-posters');
+				$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'thumbnail');
 				break;
 			}
 		}
@@ -614,6 +617,21 @@ function get_rnd_img_post($post){
 
 //==========================================================================================
 //		====================	ЧЕРНОВИК	=======================================
+
+
+// подключаю файлы стилей для ускорения загрузки сайта принялрешение все стили в один файл
+add_action( 'wp_enqueue_scripts', 'add_file_style');
+function add_file_style() {
+	if( is_front_page()){	
+
+		echo "new style";
+
+		wp_enqueue_style('style-page', get_stylesheet_directory_uri().'/styles/style-page.css');
+	}
+
+}
+
+
 
 
 

@@ -1,0 +1,17 @@
+
+
+
+/*------------------  page-tpl  -------------*/
+
+/*.animate-article{
+	flex-basis: 20%;
+}*/
+
+body{
+	background: red;
+}
+
+
+.page_article{
+	width: 20%;
+}

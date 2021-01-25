@@ -1,51 +1,41 @@
-
-<?php 
-	/**
-	 * Template Name: Page Template
-	 *
-	 */
-?>
-<?php 	get_header(); ?>
+<?php get_header(); ?>
 
 
-<?echo('+++++++++++   ' . the_ID());?>
+<div id="wrap_0">
+	<aside class="sidebar" id="left_sidebar">
+			<?php get_sidebar('left_sidebar'); ?>	
+	</aside>
 
-
-<aside>
-	<div id="left_sidebar">	 
-		<?php get_sidebar('left_sidebar'); ?>	
-	</div>
-</aside>
-
-<main>
-
-	<?php 
-		$args = array(
-				'post_type' => 'any',
+	<main id="content" class="main">
+		
+		<?php 
+			$args = array(
+				'post_type' => 'films',
 				'posts_per_page' => -1
 				);
-		$arr_posts = get_posts($args);
-		foreach ($arr_posts as $post) { 
-			$src_img = get_rnd_img_post($post);	
-	?>		
-			<article>
-				<div class="title_article">
-					<a href="<?echo($post->guid)?>"><h2><?the_title()?></h2></a>
+			$arr_posts = get_posts($args);
+			foreach ($arr_posts as $post) { 
+				$src_img = get_rnd_img_post($post);	
+		?>
+				<!-- <article id="post-<?php the_ID(); ?>" class="animate-article"> -->
+				<!-- <article id="#" class="page_article"> -->
+					<div id="box_content">
+						<div class="entry-content">
+							<div class="title_article">
+								<a href="<?echo($post->guid)?>"><h2><?the_title()?></h2></a>
+								<img src="<?echo($src_img)?>" alt="">
+							</div>
+						</div><!-- .entry-content -->
+					</div><!-- box_content -->
+				</article><!-- #post-## -->
+		<?  } ?>
 
-						<img src="<?echo($src_img)?>" alt="">
-						
+	</main>
 
-				</div>
-			</article>
-	<? } ?>
-
-</main>
-
-<aside>
-	<div id="right_sidebar">	
-		<?php get_sidebar('right_sidebar'); ?> 
-	</div>
-</aside>
+	<aside class="sidebar" id="right_sidebar">
+			<?php get_sidebar('right_sidebar'); ?>
+	</aside>
+</div>	
 
 <?php get_footer(); ?>
 
