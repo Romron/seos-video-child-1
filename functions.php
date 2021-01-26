@@ -34,7 +34,7 @@ function register_post_type_Films(){
 		// 'has_archive' => true, 
 		// 'menu_icon' => get_stylesheet_directory_uri() .'/img/function_icon.png', // иконка в меню
 		'menu_position' => 4, // порядок в меню
-		'supports' => array( 'title', 'editor', 'comments', 'author', 'thumbnail')
+		'supports' => array( 'title', 'editor', 'comments', 'author', 'thumbnail'),
 		'taxonomies' => [
 				"ProductionYear",
 				"Country",
@@ -43,7 +43,7 @@ function register_post_type_Films(){
 				"Producer",
 				"Scenario",
 				"Director"
-			],
+			]
 	);
 
 	$labels_Posters = array(
@@ -211,6 +211,15 @@ function template_type_posts( $template ) {
 				return $path_tpl_file;
 			}
 		}
+
+		if( is_tax()){
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/taxonomy-tpl.php';
+			// проверяю существование файла шаблона
+			if(file_exists($path_tpl_file)) {
+				return $path_tpl_file;
+			}
+		}
+		
 	return $template;
 }
 
@@ -292,7 +301,7 @@ function register_taxonomy_Genre(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        // 'query_var'             => $taxonomy,       
+	        'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -340,7 +349,7 @@ function register_taxonomy_ProductionYear(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        // 'query_var'             => $taxonomy,       
+	        'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -388,7 +397,7 @@ function register_taxonomy_Country(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        // 'query_var'             => $taxonomy,       
+	        'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -436,7 +445,7 @@ function register_taxonomy_Actors(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        // 'query_var'             => $taxonomy,       
+	        'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -484,7 +493,7 @@ function register_taxonomy_Producer(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        // 'query_var'             => $taxonomy,       
+	        'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -532,7 +541,7 @@ function register_taxonomy_Scenario(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        // 'query_var'             => $taxonomy,       
+	        'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -580,7 +589,7 @@ function register_taxonomy_Director(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        // 'query_var'             => $taxonomy,       
+	        'query_var'             => $taxonomy,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);

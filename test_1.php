@@ -4,10 +4,24 @@ require($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
 
 
 
-echo(get_stylesheet_directory());
-echo('<br><br>');
-echo(get_stylesheet_directory_uri());
+	// $args = array(
+	// 	'post_type' => 'films',
+	// 	'posts_per_page' => -1
+	// 	);
 
+	$args = array(
+	    'post_type' => 'films',
+	    'tax_query' => array(
+	        array(
+	            'taxonomy' => 'Genre',
+	            'field'    => 'name',
+	            'terms'    => 'boevik',
+	        ),
+	    ),
+	);
+
+	$arr_posts = get_posts($args);
+	echo '<pre>'; print_r($arr_posts); echo '</pre>';
 
 
 
