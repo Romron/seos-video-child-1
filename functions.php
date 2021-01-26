@@ -35,6 +35,15 @@ function register_post_type_Films(){
 		// 'menu_icon' => get_stylesheet_directory_uri() .'/img/function_icon.png', // иконка в меню
 		'menu_position' => 4, // порядок в меню
 		'supports' => array( 'title', 'editor', 'comments', 'author', 'thumbnail')
+		'taxonomies' => [
+				"ProductionYear",
+				"Country",
+				"Genre",
+				"Actors",
+				"Producer",
+				"Scenario",
+				"Director"
+			],
 	);
 
 	$labels_Posters = array(
@@ -155,38 +164,37 @@ function template_type_posts( $template ) {
 		}
 	}
 
-	if( $post->post_type == 'posters' ){
-		$path_tpl_file = get_stylesheet_directory() . '/template-pages/posters-tpl.php';
-		// проверяю существование файла шаблона
-		if(file_exists($path_tpl_file)) {
-			return $path_tpl_file;
+		if( $post->post_type == 'posters' ){
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/posters-tpl.php';
+			// проверяю существование файла шаблона
+			if(file_exists($path_tpl_file)) {
+				return $path_tpl_file;
+			}
 		}
-	}
 
-	if( $post->post_type == 'acters' ){
-		$path_tpl_file = get_stylesheet_directory() . '/template-pages/acters-tpl.php';
-		// проверяю существование файла шаблона
-		if(file_exists($path_tpl_file)) {
-			return $path_tpl_file;
+		if( $post->post_type == 'acters' ){
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/acters-tpl.php';
+			// проверяю существование файла шаблона
+			if(file_exists($path_tpl_file)) {
+				return $path_tpl_file;
+			}
 		}
-	}
 
-	if( $post->post_type == 'announcement' ){
-		$path_tpl_file = get_stylesheet_directory() . '/template-pages/announcement-tpl.php';
-		// проверяю существование файла шаблона
-		if(file_exists($path_tpl_file)) {
-			return $path_tpl_file;
+		if( $post->post_type == 'announcement' ){
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/announcement-tpl.php';
+			// проверяю существование файла шаблона
+			if(file_exists($path_tpl_file)) {
+				return $path_tpl_file;
+			}
 		}
-	}
 
-	if( $post->post_type == 'news' ){
-		$path_tpl_file = get_stylesheet_directory() . '/template-pages/news-tpl.php';
-		// проверяю существование файла шаблона
-		if(file_exists($path_tpl_file)) {
-			return $path_tpl_file;
+		if( $post->post_type == 'news' ){
+			$path_tpl_file = get_stylesheet_directory() . '/template-pages/news-tpl.php';
+			// проверяю существование файла шаблона
+			if(file_exists($path_tpl_file)) {
+				return $path_tpl_file;
+			}
 		}
-	}
-
 
 		if( is_search('serch')){
 			$path_tpl_file = get_stylesheet_directory() . '/template-pages/serch-tpl.php';
@@ -203,55 +211,46 @@ function template_type_posts( $template ) {
 				return $path_tpl_file;
 			}
 		}
-
-
-
-
-
 	return $template;
-
 }
 
 // регистрация сайдбаров
 add_action( 'widgets_init', 'register_sidebars_addPF' );
 function register_sidebars_addPF(){
 
-		$parameters_left_sidebar = array(
-			'id' => 'left_sidebar',
-			'name' => 'left-sidebar',
-			'description' => 'Данный сайдбар позволит добавить что-либо в левую колонку сайта.',
-			'before_widget' => '',
-			'after_widget' => '',
-			'before_title' => '',
-			'after_title' => ''
-			);
+	$parameters_left_sidebar = array(
+		'id' => 'left_sidebar',
+		'name' => 'left-sidebar',
+		'description' => 'Данный сайдбар позволит добавить что-либо в левую колонку сайта.',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '',
+		'after_title' => ''
+		);
 
-		$parameters_right_sidebar = array(
-			'id' => 'right_sidebar',
-			'name' => 'right-sidebar',
-			'description' => 'Данный сайдбар позволит добавить что-либо в правую колонку сайта.',
-			'before_widget' => '',
-			'after_widget' => '',
-			'before_title' => '',
-			'after_title' => ''
-			);
+	$parameters_right_sidebar = array(
+		'id' => 'right_sidebar',
+		'name' => 'right-sidebar',
+		'description' => 'Данный сайдбар позволит добавить что-либо в правую колонку сайта.',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '',
+		'after_title' => ''
+		);
 	register_sidebar($parameters_left_sidebar);
 	register_sidebar($parameters_right_sidebar);
 }
 
-
-
-/* Список аксономий:
-		"ProductionYear"
-		"Country"
-		"Genre"
-		"Actors"
-		"Producer"
-		"Scenario"
-		"Director"
-*/
-
 //	добавление таксономий
+	/* Список аксономий:
+			"ProductionYear"
+			"Country"
+			"Genre"
+			"Actors"
+			"Producer"
+			"Scenario"
+			"Director"
+	*/
 add_action( 'init', 'register_taxonomy_Genre' );
 function register_taxonomy_Genre(){
 	    $labels = array(
@@ -298,7 +297,7 @@ function register_taxonomy_Genre(){
 	        '_builtin'              => false,
 	    	);
 		register_taxonomy('Genre', array('films','posters'), $args);
-	}
+}
 
 add_action( 'init', 'register_taxonomy_ProductionYear' );
 function register_taxonomy_ProductionYear(){
@@ -346,7 +345,7 @@ function register_taxonomy_ProductionYear(){
 	        '_builtin'              => false,
 	    	);
 		register_taxonomy('ProductionYear', array('films','posters'), $args);
-	}
+}
 
 add_action( 'init', 'register_taxonomy_Country' );
 function register_taxonomy_Country(){
@@ -394,7 +393,7 @@ function register_taxonomy_Country(){
 	        '_builtin'              => false,
 	    	);
 		register_taxonomy('Country', array('films','posters'), $args);
-	}
+}
 
 add_action( 'init', 'register_taxonomy_Actors' );
 function register_taxonomy_Actors(){
@@ -442,7 +441,7 @@ function register_taxonomy_Actors(){
 	        '_builtin'              => false,
 	    	);
 		register_taxonomy('Actors', array('films','posters'), $args);
-	}
+}
 
 add_action( 'init', 'register_taxonomy_Producer' );
 function register_taxonomy_Producer(){
@@ -490,7 +489,7 @@ function register_taxonomy_Producer(){
 	        '_builtin'              => false,
 	    	);
 		register_taxonomy('Producer', array('films','posters'), $args);
-	}
+}
 
 add_action( 'init', 'register_taxonomy_Scenario' );
 function register_taxonomy_Scenario(){
@@ -538,7 +537,7 @@ function register_taxonomy_Scenario(){
 	        '_builtin'              => false,
 	    	);
 		register_taxonomy('Scenario', array('films','posters'), $args);
-	}
+}
 
 add_action( 'init', 'register_taxonomy_Director' );
 function register_taxonomy_Director(){
@@ -586,7 +585,10 @@ function register_taxonomy_Director(){
 	        '_builtin'              => false,
 	    	);
 		register_taxonomy('Director', array('films','posters'), $args);
-	}
+}
+
+
+
 
 // выбор картинки поста на главную страницу
 function get_rnd_img_post($post){
@@ -605,17 +607,16 @@ function get_rnd_img_post($post){
 		if (count($arr_media) == 0) {
 			$result_str = false;
 			break;
-		}
-		elseif (count($arr_media) == 1) {
+		}elseif (count($arr_media) == 1) {
 			// echo('<img src="' . wp_get_attachment_image_url($arr_date_attach->ID,'size-for-posters') . '" alt="">');
-			$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'size-for-posters');
+			$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'thumbnail');
 			break;
 		}else{
 			if ($num_img == rand(0, count($arr_media))) {
-				$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'size-for-posters');
+				$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'thumbnail');
 				break;
 			}elseif ($num_img >= count($arr_media)) {
-				$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'size-for-posters');
+				$result_str = wp_get_attachment_image_url($arr_date_attach->ID,'thumbnail');
 				break;
 			}
 		}
@@ -623,49 +624,20 @@ function get_rnd_img_post($post){
 	return $result_str;
 }
 
-
-
 //==========================================================================================
 //		====================	ЧЕРНОВИК	=======================================
 
 
-
-// Регистрирую файл шаблона для поиска
-
-
-
-	// add_filter( 'template_include', 'add_template_serch');
-	// function add_template_serch( $templates ) {
-	// 	if( is_search('serch')){
-	// 		$path_tpl_file = get_stylesheet_directory() . '/template-pages/serch-tpl.php';
-	// 		// проверяю существование файла шаблона
-	// 		if(file_exists($path_tpl_file)) {
-	// 			return $path_tpl_file;
-	// 		}
-	// 	}
-	// }
-
-
-
-//==========================================================================================
-//		====================	ХЛАМ	=======================================
-
-// 
-// Регестрирую новые размеры картинок
-// add_image_size( 'size-for-posters', 240, 300 );	// регестрирую новый размер для ростеров
-
-
-
 // подключаю файлы стилей для ускорения загрузки сайта принялрешение все стили в один файл
-// add_action( 'wp_enqueue_scripts', 'add_file_style');
-// function add_file_style() {
-// 	wp_enqueue_style( 'style-sidebar', get_stylesheet_directory_uri().'/styles/style-sidebar.css');
+add_action( 'wp_enqueue_scripts', 'add_file_style');
+function add_file_style() {
+	if( is_front_page()){	
+		wp_enqueue_style('style-page', get_stylesheet_directory_uri().'/styles/style-page.css');
+	}
 
-// 	if( is_front_page()){	
-// 		wp_enqueue_style( 'style-page', get_stylesheet_directory_uri().'/styles/style-page.css');
-// 	}
+}
 
-// }
+
 
 
 

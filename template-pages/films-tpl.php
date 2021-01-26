@@ -1,3 +1,11 @@
+<?php
+	/*
+	Template Name: Страница фильмов
+	*/
+?>
+
+
+
 <?php get_header(); ?>
 
 

@@ -17,14 +17,11 @@ Version: 1.0
 #wrap_0{
 	height: 100%;
 	width: 100%;
-	border: 2px solid #FD0522;	/*test*/
+	border: 1px solid #7A7A7A;	/* без этой строки не работает */
 	display: flex;
 	padding: 2px;
 }
 
-.sidebar, .main {				
-	border: 2px solid #1B04FC;	/*test*/
-}
 
 #content main {
 	padding: 2px;
@@ -39,6 +36,10 @@ Version: 1.0
 
 .sidebar{
 	flex-basis: 20%;
+}
+
+#left_sidebar{
+	margin-top: 10px; 
 }
 
 /*------------------  САЙДБАРЫ  -------------*/

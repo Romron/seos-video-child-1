@@ -1,3 +1,31 @@
-body{
-	background: red;
+
+/*------------------  page-tpl  -------------*/
+
+/*.animate-article{
+	flex-basis: 20%;
+}*/
+
+/**{
+	background: red ;
+}*/
+
+#main_content{
+	flex-basis: 60%;
+	padding: 2px;
+	margin: 2px;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+
+	/*border: 1px solid #0CFB00;*/
+
 }
+
+.animate-article{
+	width: 48% !important;
+	text-align: center;
+	/*margin-right: 40px;*/
+
+}
+
