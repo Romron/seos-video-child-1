@@ -1,0 +1,48 @@
+
+/**/
+
+
+/*------------------  САЙДБАРЫ  -------------*/
+
+#announcement_movies, #advertising_space_right{
+	background:  #A69EB8;
+	width: auto;
+	height: 40%;
+	margin-bottom: 5px;
+	margin-top: auto;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+#serch{
+height: 5%;
+padding-top: 4%;
+/*width: auto;*/
+text-align: center; 
+}
+
+
+#filters, #advertising_space_left, #similar_movies{
+	background: #A69EB8;
+	width: auto;
+	margin-bottom: 5px;
+	margin-top: auto;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+#advertising_space_left, #similar_movies{
+	height: 20%;
+}
+
+
+   #filters {
+   	height: 50%;
+   }
+
+
+.widget-meta-data-filter{
+	border: none;
+}
