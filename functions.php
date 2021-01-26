@@ -35,6 +35,15 @@ function register_post_type_Films(){
 		// 'menu_icon' => get_stylesheet_directory_uri() .'/img/function_icon.png', // иконка в меню
 		'menu_position' => 4, // порядок в меню
 		'supports' => array( 'title', 'editor', 'comments', 'author', 'thumbnail')
+		'taxonomies' => [
+				"ProductionYear",
+				"Country",
+				"Genre",
+				"Actors",
+				"Producer",
+				"Scenario",
+				"Director"
+			],
 	);
 
 	$labels_Posters = array(
@@ -623,9 +632,6 @@ function get_rnd_img_post($post){
 add_action( 'wp_enqueue_scripts', 'add_file_style');
 function add_file_style() {
 	if( is_front_page()){	
-
-		echo "new style";
-
 		wp_enqueue_style('style-page', get_stylesheet_directory_uri().'/styles/style-page.css');
 	}
 
