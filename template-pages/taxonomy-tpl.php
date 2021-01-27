@@ -7,8 +7,6 @@
 
 <?php get_header(); ?>
 
-<h3>taxonomys</h3>
-
 <div id="wrap_0">
 	<aside class="sidebar" id="left_sidebar">
 			<?php get_sidebar('left_sidebar'); ?>	
@@ -16,17 +14,22 @@
 
 	<div id="main_content" >
 		
-		<?php 
-			$args = array(
-				'post_type' => 'films',
-				'posts_per_page' => -1
-				);
-			$arr_posts = get_posts($args);
-			foreach ($arr_posts as $post) { 
-				$src_img = get_rnd_img_post($post);	
+		<? 	
+			$term_curent_tax = get_queried_object(); 
+				$args = array(
+					  'name' => $term_curent_tax->taxonomy
+					);
+			$output = 'objects';
+			$arr_taxonomy = get_taxonomies( $args, $output );
+			foreach ($arr_taxonomy as $taxonomy) {}
 		?>
+		<header id="header_main_content">
+			<h1 id="title_main_content"><? echo $taxonomy->description;  echo $term_curent_tax->name ?></h1>
+		</header>
+
+		<?php if ( have_posts() ) { while ( have_posts() ) { the_post(); ?>
+		<?php 	$src_img = get_rnd_img_post($post);	?>
 				<article id="post-<?php the_ID(); ?>" class="animate-article">
-				<!-- <article id="#" class="page_article"> -->
 					<div id="box_content">
 						<div class="entry-content">
 							<div class="title_article">
@@ -36,16 +39,19 @@
 						</div><!-- .entry-content -->
 					</div><!-- box_content -->
 				</article><!-- #post-## -->
-		<?  } ?>
+			<?php } } else { ?>
+				<p>По вашему запросу фильмов не найдено</p>
+			<?php } ?>
 
 	</div>
-
 	<aside class="sidebar" id="right_sidebar">
 			<?php get_sidebar('right_sidebar'); ?>
 	</aside>
 </div>	
 
 <?php get_footer(); ?>
+
+
 
 
 

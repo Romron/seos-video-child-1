@@ -156,7 +156,7 @@ function template_type_posts( $template ) {
 	global $post;
 
 	# шаблон для записи по типу
-	if( $post->post_type == 'films' ){
+	if( $post->post_type == 'films' and !is_tax()){
 		$path_tpl_file = get_stylesheet_directory() . '/template-pages/films-tpl.php';
 		// проверяю существование файла шаблона
 		if(file_exists($path_tpl_file)) {
@@ -164,7 +164,7 @@ function template_type_posts( $template ) {
 		}
 	}
 
-		if( $post->post_type == 'posters' ){
+		if( $post->post_type == 'posters' and !is_tax()){
 			$path_tpl_file = get_stylesheet_directory() . '/template-pages/posters-tpl.php';
 			// проверяю существование файла шаблона
 			if(file_exists($path_tpl_file)) {
@@ -172,7 +172,7 @@ function template_type_posts( $template ) {
 			}
 		}
 
-		if( $post->post_type == 'acters' ){
+		if( $post->post_type == 'acters' and !is_tax()){
 			$path_tpl_file = get_stylesheet_directory() . '/template-pages/acters-tpl.php';
 			// проверяю существование файла шаблона
 			if(file_exists($path_tpl_file)) {
@@ -180,7 +180,7 @@ function template_type_posts( $template ) {
 			}
 		}
 
-		if( $post->post_type == 'announcement' ){
+		if( $post->post_type == 'announcement' and !is_tax()){
 			$path_tpl_file = get_stylesheet_directory() . '/template-pages/announcement-tpl.php';
 			// проверяю существование файла шаблона
 			if(file_exists($path_tpl_file)) {
@@ -188,7 +188,7 @@ function template_type_posts( $template ) {
 			}
 		}
 
-		if( $post->post_type == 'news' ){
+		if( $post->post_type == 'news' and !is_tax()){
 			$path_tpl_file = get_stylesheet_directory() . '/template-pages/news-tpl.php';
 			// проверяю существование файла шаблона
 			if(file_exists($path_tpl_file)) {
@@ -220,6 +220,7 @@ function template_type_posts( $template ) {
 			}
 		}
 		
+
 	return $template;
 }
 
@@ -284,7 +285,7 @@ function register_taxonomy_Genre(){
 	    		);
 	    $args = array(
 	        'label'                 => '',
-	        'description'           => 'Для сортировки фильмов, постеров по жанрам',
+	        'description'           => 'Жанр фильмов: ',
 	        'hierarchical'          => true,
 	        'labels'                => $labels,
 	        'public'                => true,
@@ -308,7 +309,7 @@ function register_taxonomy_Genre(){
 		register_taxonomy('Genre', array('films','posters'), $args);
 }
 
-add_action( 'init', 'register_taxonomy_ProductionYear' );
+add_action( 'init', 'register_taxonomy_ProductionYear',0 );
 function register_taxonomy_ProductionYear(){
 	    $labels = array(
 	            'name'                       => 'Год выпуска',
@@ -332,7 +333,7 @@ function register_taxonomy_ProductionYear(){
 	    		);
 	    $args = array(
 	        'label'                 => '',
-	        'description'           => 'Для сортировки фильмов, постеров по годам выпуска',
+	        'description'           => 'Год производства фильмов: ',
 	        'hierarchical'          => false,
 	        'labels'                => $labels,
 	        'public'                => true,
@@ -350,6 +351,7 @@ function register_taxonomy_ProductionYear(){
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
 	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => true,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -380,7 +382,7 @@ function register_taxonomy_Country(){
 	    		);
 	    $args = array(
 	        'label'                 => '',
-	        'description'           => 'Для сортировки фильмов, постеров по жанрам',
+	        'description'           => 'Страна производства фильмов:  ',
 	        'hierarchical'          => true,
 	        'labels'                => $labels,
 	        'public'                => true,
@@ -428,7 +430,7 @@ function register_taxonomy_Actors(){
 	    		);
 	    $args = array(
 	        'label'                 => '',
-	        'description'           => 'Для сортировки фильмов, постеров по актёрам',
+	        'description'           => 'Фильмы с участием актёра:  ',
 	        'hierarchical'          => true,
 	        'labels'                => $labels,
 	        'public'                => true,
@@ -476,7 +478,7 @@ function register_taxonomy_Producer(){
 	    		);
 	    $args = array(
 	        'label'                 => '',
-	        'description'           => 'Для сортировки фильмов, постеров по актёрам',
+	        'description'           => 'Режисёр фильмов   ',
 	        'hierarchical'          => true,
 	        'labels'                => $labels,
 	        'public'                => true,
@@ -524,7 +526,7 @@ function register_taxonomy_Scenario(){
 	    		);
 	    $args = array(
 	        'label'                 => '',
-	        'description'           => 'Для сортировки фильмов, постеров по сценаристам',
+	        'description'           => 'Фильмы сценариста  ',
 	        'hierarchical'          => true,
 	        'labels'                => $labels,
 	        'public'                => true,
@@ -572,7 +574,7 @@ function register_taxonomy_Director(){
 	    		);
 	    $args = array(
 	        'label'                 => '',
-	        'description'           => 'Для сортировки фильмов, постеров по директорам',
+	        'description'           => 'Фильмы директора  ',
 	        'hierarchical'          => true,
 	        'labels'                => $labels,
 	        'public'                => true,
@@ -640,7 +642,7 @@ function get_rnd_img_post($post){
 // подключаю файлы стилей для ускорения загрузки сайта принялрешение все стили в один файл
 add_action( 'wp_enqueue_scripts', 'add_file_style');
 function add_file_style() {
-	if( is_front_page()){	
+	if( is_front_page() or is_tax()){	
 		wp_enqueue_style('style-page', get_stylesheet_directory_uri().'/styles/style-page.css');
 	}
 

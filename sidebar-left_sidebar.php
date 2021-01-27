@@ -10,17 +10,40 @@
 <div id="filters">
 	<h3>Подбор фильмов</h3>
 
+
+	<?
+
+		$args = array(
+			'public'   => true,
+			'_builtin' => false
+		);
+		$output = 'names';
+		$list_taxonomys = get_taxonomies($args,$output);
+		foreach ($list_taxonomys as $taxonomy) {
+			$arr_terms = get_terms( $taxonomy, array("hide_empty" => false));
+
+		}
+
+
+
+
+
+	?>
+
+
 	<nav class="menu-films">
-
-
 		<ul>
-			<li><a href="#">Год выпуска</a></li>
-			<li><a href="#">Жанр</a></li>
-			<li><a href="#">Страна производитель</a></li>
-			<li><a href="#">Актёр</a></li>
-			<li><a href="#">Продюссер</a></li>
-			<li><a href="#">Сценарист</a></li>
-			<li><a href="#">Директор</a></li>
+			<?
+
+			foreach ($arr_terms as $obj_term) {
+				$link_to_page_terms = get_term_link($obj_term->slug,$obj_term->taxonomy);
+				// echo '<pre>'; print_r($link_to_page_terms); echo '</pre>';
+			?>	
+				<li><a href="<?echo($link_to_page_terms)?>"><?echo($obj_term->slug)?></a></li>
+
+			<?
+			}
+			?>
 		</ul>
 
 	</nav>
