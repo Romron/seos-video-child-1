@@ -598,6 +598,16 @@ function register_taxonomy_Director(){
 		register_taxonomy('Director', array('films','posters'), $args);
 }
 
+// подключаю файлы стилей для разных страниц. Чем больше отдельных файлов стилей тем медленее загружаеться файл
+add_action( 'wp_enqueue_scripts', 'add_file_style');
+function add_file_style() {
+	if( is_front_page() or is_tax()){	
+		wp_enqueue_style('style-page', get_stylesheet_directory_uri().'/styles/style-page.css');
+	}
+}
+
+
+
 
 
 
@@ -638,17 +648,11 @@ function get_rnd_img_post($post){
 //==========================================================================================
 //		====================	ЧЕРНОВИК	=======================================
 
-
-// подключаю файлы стилей для ускорения загрузки сайта принялрешение все стили в один файл
-add_action( 'wp_enqueue_scripts', 'add_file_style');
-function add_file_style() {
-	if( is_front_page() or is_tax()){	
-		wp_enqueue_style('style-page', get_stylesheet_directory_uri().'/styles/style-page.css');
-	}
-
+add_action('after_setup_theme','register_menu' );
+function register_menu(){
+	register_nav_menu('menu_left_sibear_top', 'Левый верхний sibear');
+	register_nav_menu('menu_left_sibear_button', 'Левый нижний sibear');
 }
-
-
 
 
 

@@ -12,38 +12,52 @@
 
 
 	<?
-
 		$args = array(
 			'public'   => true,
 			'_builtin' => false
-		);
-		$output = 'names';
+			);
+		$output = 'object';
 		$list_taxonomys = get_taxonomies($args,$output);
-		foreach ($list_taxonomys as $taxonomy) {
-			$arr_terms = get_terms( $taxonomy, array("hide_empty" => false));
-
-		}
-
-
-
-
-
 	?>
 
 
 	<nav class="menu-films">
 		<ul>
-			<?
+			<!-- Меню подбора фильмов -->
+				   <!-- -----  wp_nav_menu ------ -->
+					<?php  
+						// if (has_nav_menu('menu_left_sibear_top')) {
+						// 	wp_nav_menu([
+						// 		// 'menu' => 'Первое меню',
+						// 		'theme_location' => 'menu_left_sibear_top',
+						// 	]);
+						// }
+					?>
+				   <!-- -----  wp_nav_menu ------ -->
 
-			foreach ($arr_terms as $obj_term) {
-				$link_to_page_terms = get_term_link($obj_term->slug,$obj_term->taxonomy);
-				// echo '<pre>'; print_r($link_to_page_terms); echo '</pre>';
-			?>	
-				<li><a href="<?echo($link_to_page_terms)?>"><?echo($obj_term->slug)?></a></li>
+			<? foreach ($list_taxonomys as $taxonomy) { ?>
+					<ul>	<h4><?  echo($taxonomy->label)?></h4>
+						<? $arr_terms = get_terms( $taxonomy->name, array("hide_empty" => false));
+						foreach ($arr_terms as $obj_term) {
+							$link_to_page_terms = get_term_link($obj_term->slug,$obj_term->taxonomy);
+						?>	
+							<li><a href="<?echo($link_to_page_terms)?>"><?echo($obj_term->slug)?></a></li>
+						<? } ?>
+						</ul>
+			<?	} ?>
+			
 
-			<?
-			}
-			?>
+
+
+
+
+
+
+
+
+
+
+
 		</ul>
 
 	</nav>
@@ -53,6 +67,19 @@
 <div id="advertising_space_left">
 	<h3>advertising_space</h3>
 
+	<!-- Меню для тестов -->
+		<?php  
+			// if (has_nav_menu('menu_left_sibear_button')) {
+			// 	wp_nav_menu([
+			// 		// 'menu' => 'Второе меню',
+			// 		'theme_location' => 'menu_left_sibear_button',
+			// 		// 'container' => false,
+			// 		// 'container' => 'div',
+
+			// 	]);
+			// }
+
+		?>
 
   
 </div>
