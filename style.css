@@ -12,6 +12,10 @@ Version: 1.0
 	margin: 0px;
 }
 
+.searchwp-live-search-result a{
+	color: #8E8E8E;
+}
+
 /*------------------  films-tpl  -------------*/
 
 #wrap_0{
