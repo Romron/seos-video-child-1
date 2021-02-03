@@ -12,110 +12,124 @@ Version: 1.0
 	margin: 0px;
 }
 
-.searchwp-live-search-result a{
+/*текст в выпадающем окошке поиска плагина*/
+.searchwp-live-search-result a{	
 	color: #8E8E8E;
 }
 
 /*------------------  films-tpl  -------------*/
 
-#wrap_0{
-	height: 100%;
-	min-height: 1000px;
-	width: 100%;
-	border: 1px solid #7A7A7A;	/* без этой строки не работает */
-	display: flex;
-	padding: 2px;
-}
+	#wrap_0{
+		height: 100%;
+		min-height: 1000px;
+		width: 100%;
+		border: 1px solid #7A7A7A;	/* без этой строки не работает */
+		display: flex;
+		padding: 2px;
+	}
 
 
-#content main {
-	padding: 2px;
-	margin: 2px;
-	flex-basis: 60%;
-}
+	#content main {
+		padding: 2px;
+		margin: 2px;
+		flex-basis: 60%;
+	}
 
-#box_comment{
-	height: 200px;
-	border: 2px solid #33FC04
-}
+	#box_comment{
+		height: 200px;
+		border: 2px solid #33FC04
+	}
 
 /*------------------  САЙДБАРЫ  -------------*/
-.sidebar{
-	flex-basis: 20%;
+	.sidebar{
+		flex-basis: 20%;
 
-}
+	}
 
-#left_sidebar{
-	margin-top: 10px; 
-}
-
-
-#content aside{
-	padding: 10px;
-}
-
-#announcement_movies, 
-#advertising_space_right,
-#filters, 
-#advertising_space_left, 
-#similar_movies {
-	border: 2px solid #B3C4C3; /*test*/ 
-	/*background:  #A69EB8;*/
-	height: 47%;
-	margin: 4px;
-}
-
-#advertising_space_left, 
-#similar_movies{
-	height: 33%;
-}
-
-#filters{
-	height: auto;
-	padding: 3px 1px 3px 1px;
-}
-
-#serch{
-	margin: 4px;
-	margin-bottom: 14px;
-}
+	#left_sidebar{
+		margin-top: 10px; 
+	}
 
 
+	#content aside{
+		padding: 10px;
+	}
+
+	#announcement_movies, 
+	#advertising_space_right,
+	#filters, 
+	#advertising_space_left, 
+	#similar_movies {
+		border: 2px solid #5A5A5A;
+		background: #606060;
+		/*background:  #A69EB8;*/
+		height: 47.5%;
+		margin: 4px;
+	}
+
+	#advertising_space_left, 
+	#similar_movies{
+		min-height: 33%;
+		height: 45%;
+	}
+
+	#filters{
+		height: auto;
+		padding: 3px 1px 3px 1px;
+	}
+
+	#serch{
+		margin: 4px;
+		margin-bottom: 14px;
+	}
+
+	.site-footer{
+		height: 50px;
+		margin: 10px;
+	}
 
 
 /*------------------  MENU  -------------*/
+	.menu-films *{
+		padding: 0px;
+		margin: 0px;
+	}
 
-.menu-films *{
-	padding: 0px;
-	margin: 0px;
-}
+	.menu-films {
+		padding: 0px;
+	}
+	.menu-films__title {
+		/*border: 1px solid #4106FF; /*test*/*/
 
-.menu-films {
-	padding: 0px;
-}
-.menu-films__title {
-	/*border: 1px solid #4106FF; /*test*/*/
+	}
+	.ul-first-level {
+		/*border: 1px solid #FEFB07; /*test*/*/
+	}
+	.ul-first-level__li-first-level {
+		/*border: 1px solid #FE0404; /*test*/*/
+		padding: 3px;
+		margin: -10px;
+	}
+	.ul-first-level__li-first-level__h4 {
+		border: 1px solid ##7A7A7A; 
+		padding: 0px 0px 0px 7px ;
+	}
+	.ul-second-level {
+		/*border: 1px solid #07FE92; test*/
+		padding: 0px 0px 0px 20px !important;
+		/*margin: 0px;*/
+	}
 
-}
-.ul-first-level {
-	/*border: 1px solid #FEFB07; /*test*/*/
-}
-.ul-first-level__li-first-level {
-	/*border: 1px solid #FE0404; /*test*/*/
-	padding: 3px;
-	margin: -10px;
-}
-.ul-first-level__li-first-level__h4 {
-	border: 1px solid ##7A7A7A; 
-	padding: 0px 0px 0px 7px ;
-}
-.ul-second-level {
-	/*border: 1px solid #07FE92; test*/
-	padding: 0px 0px 0px 20px !important;
-	/*margin: 0px;*/
-}
+	.menu-films__title{
+		text-align: center;
+	}
 
-.menu-films__title{
+
+/*------------------  Пагинация страниц  -------------*/
+
+.pagination_blok{
+	border: 1px solid #01F8BB;
+	width: 100%;
+	padding: auto;
 	text-align: center;
 }
-

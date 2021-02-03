@@ -53,7 +53,7 @@
 </div>
 
 <div id="advertising_space_left">
-	<h3>advertising_space</h3>
+	<!-- <h3>advertising_space</h3> -->
 
 	<!-- Меню для тестов -->
 		<?php  
@@ -72,7 +72,7 @@
   
 </div>
 <div id="similar_movies">
-	<h3>advertising_space</h3>
+	<!-- <h3>advertising_space</h3> -->
 </div>
 
 

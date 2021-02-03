@@ -42,8 +42,16 @@
 	<aside class="sidebar" id="right_sidebar">
 			<?php get_sidebar('right_sidebar'); ?>
 	</aside>
+
+
 </div>	
 
+	<nav class="pagination_blok">
+		
+
+		<!-- <h4><?php //echo paginate_links( $args ) ?></h4> -->
+
+	</nav>
 <?php get_footer(); ?>
 
 

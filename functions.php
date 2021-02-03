@@ -302,7 +302,8 @@ function register_taxonomy_Genre(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => $taxonomy, 
+	        'query_var'             => true,      
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -350,8 +351,8 @@ function register_taxonomy_ProductionYear(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
-	        // 'query_var'             => true,       
+	        // 'query_var'             => $taxonomy,       
+	        'query_var'             => true,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -399,7 +400,8 @@ function register_taxonomy_Country(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => $taxonomy,  
+	        'query_var'             => true,     
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -447,7 +449,8 @@ function register_taxonomy_Actors(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => $taxonomy, 
+	        'query_var'             => true,      
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -495,7 +498,8 @@ function register_taxonomy_Producer(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => $taxonomy,
+	        'query_var'             => true,       
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -543,7 +547,8 @@ function register_taxonomy_Scenario(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => $taxonomy,       
+	        'query_var'             => true,
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -591,7 +596,8 @@ function register_taxonomy_Director(){
 	        'show_in_quick_edit'    => true,
 	        'meta_box_cb'           => null,
 	        'show_admin_column'     => true,
-	        'query_var'             => $taxonomy,       
+	        // 'query_var'             => $taxonomy, 
+	        'query_var'             => true,      
 	        'sort'                  => true,
 	        '_builtin'              => false,
 	    	);
@@ -605,11 +611,6 @@ function add_file_style() {
 		wp_enqueue_style('style-page', get_stylesheet_directory_uri().'/styles/style-page.css');
 	}
 }
-
-
-
-
-
 
 // выбор картинки поста на главную страницу
 function get_rnd_img_post($post){
@@ -647,6 +648,85 @@ function get_rnd_img_post($post){
 
 //==========================================================================================
 //		====================	ЧЕРНОВИК	=======================================
+
+
+function pagination_to_page() {
+	global $wp_query;
+	// global $post;
+
+
+		$arg = array(
+			'post_type' => 'any',
+			'posts_per_page' => -1
+			);
+	$arr_posts = get_posts($arg);
+	setup_postdata($arr_posts);
+	echo '<pre>+++'; print_r (get_query_var('paged')) ; echo '+++</pre>';
+	
+	$args = array(
+		'base'    => 'http://test-prostofilm-ml-local-host/',
+		'format'  => '',
+		'current' => max( 1, get_query_var('paged') ),
+		'total'   => count($arr_posts),
+		'show_all'=>true
+	);
+
+	
+	$result = paginate_links( $args );
+	echo '**** <pre>'; print_r($result); echo '</pre>****';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	return $arr_posts;
+}
+
+
+
+
+
+
+
+
+
+
+		// global $wp_query;
+
+		// $big = 999999999; // уникальное число для замены
+
+		// $args = array(
+		// 	'base'    => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
+		// 	'format'  => '',
+		// 	'current' => max( 1, get_query_var('paged') ),
+		// 	'total'   => $wp_query->max_num_pages,
+		// );
+
+		// $result = paginate_links( $args );
+
+		// // удаляем добавку к пагинации для первой страницы
+		// $result = preg_replace( '~/page/1/?([\'"])~', '\1', $result );
+
+
+
+
+
+
+
+
+
 
 add_action('after_setup_theme','register_menu' );
 function register_menu(){

@@ -11,10 +11,10 @@
 
 	</div>
 	<div id="announcement_movies">
-		<h3>announcement_space</h3>
+		<!-- <h3>announcement_space</h3> -->
 	</div>
 	<div id="advertising_space_right">
-		<h3>advertising_space</h3>
+		<!-- <h3>advertising_space</h3> -->
 	</div>
 
 
