@@ -651,8 +651,11 @@ function get_rnd_img_post($post){
 
 
 function pagination_to_page() {
+	global $post;
+	// global $GLOBALS;
 	global $wp_query;
-	// global $post;
+	// global $query_var;
+
 
 
 		$arg = array(
@@ -660,15 +663,28 @@ function pagination_to_page() {
 			'posts_per_page' => -1
 			);
 	$arr_posts = get_posts($arg);
-	setup_postdata($arr_posts);
-	echo '<pre>+++'; print_r (get_query_var('paged')) ; echo '+++</pre>';
+	// setup_postdata($arr_posts);
+	// echo '<pre>+++'; print_r (get_query_var('paged')) ; echo '+++</pre>';
+	echo '<pre>+++<br>'; print_r ($query_var) ; echo '<br>+++</pre>';
 	
+
+foreach ($arr_posts as $post) {
+
+		echo '<pre>='; the_title(); echo '=</pre>';
+	
+	echo '<pre>+++'; print_r ( $wp_query) ; echo '+++</pre>';
+
 	$args = array(
-		'base'    => 'http://test-prostofilm-ml-local-host/',
-		'format'  => '',
+		'base'    => 'http://test-prostofilm-ml-local-host%_%',
+		'format'  => '?page=%#%',
 		'current' => max( 1, get_query_var('paged') ),
+		// 'current' => 0,
 		'total'   => count($arr_posts),
-		'show_all'=>true
+		// 'show_all'=>true,
+		'type' => 'plain',
+		'prev_next' => 'prev_next',
+		'mid_size' => 5,
+		'end_size' => 5,
 	);
 
 	
@@ -676,7 +692,7 @@ function pagination_to_page() {
 	echo '**** <pre>'; print_r($result); echo '</pre>****';
 
 
-
+}
 
 
 

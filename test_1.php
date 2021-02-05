@@ -2,6 +2,9 @@
 // require_once("function.php");
 require($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
 
+// define('WP_USE_THEMES', false);
+// get_header();
+
 
 	pagination_to_page();
 

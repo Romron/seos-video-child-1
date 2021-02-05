@@ -16,12 +16,15 @@
 	<div id="main_content" >
 		
 		<?php 
+
+
 			$args = array(
 				'post_type' => 'films',
 				'posts_per_page' => -1
 				);
 			$arr_posts = get_posts($args);
 			foreach ($arr_posts as $post) { 
+				// setup_postdata($post);
 				$src_img = get_rnd_img_post($post);	
 		?>
 				<article id="post-<?php the_ID(); ?>" class="animate-article">
@@ -29,13 +32,13 @@
 					<div id="box_content">
 						<div class="entry-content">
 							<div class="title_article">
-								<a href="<?echo($post->guid)?>"><h2><?the_title()?></h2></a>
+								<a href="<?echo($post->guid)?>"><h2>333  <?the_title()?>  333</h2></a>
 								<img src="<?echo($src_img)?>" alt="">
 							</div>
 						</div><!-- .entry-content -->
 					</div><!-- box_content -->
 				</article><!-- #post-## -->
-		<?  } ?>
+		<?   } ?>
 
 	</div>
 
