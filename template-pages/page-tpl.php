@@ -17,10 +17,13 @@
 		
 		<?php 
 
+			global $wp_query;
 
 			$args = array(
 				'post_type' => 'films',
-				'posts_per_page' => -1
+				'posts_per_page' => -1,
+				'posts_per_page' => '10',
+				'paged' => get_query_var('paged') ?: 1 // страница пагинации
 				);
 			$arr_posts = get_posts($args);
 			foreach ($arr_posts as $post) { 
@@ -51,8 +54,22 @@
 
 	<nav class="pagination_blok">
 		
+		<?php 	
+			$big = 999999999; // уникальное число для замены
+			$args = array(
+				'base'    => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
+				'format'  => '',
+				'current' => max( 1, get_query_var( 'page' ) ),
+				'total'   => $wp_query->max_num_pages,
+				'type' => 'plain',
+				'prev_next' => 'prev_next',
+				'mid_size' => 5,
+				'end_size' => 5,
+			); 
+		?>
 
-		<!-- <h4><?php //echo paginate_links( $args ) ?></h4> -->
+
+		<h4><?php $result = paginate_links( $args ); ?></h4>
 
 	</nav>
 <?php get_footer(); ?>
