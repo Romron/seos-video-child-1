@@ -53,6 +53,7 @@ Version: 1.0
 
 	#content aside{
 		padding: 10px;
+		overflow:hidden;
 	}
 
 	#announcement_movies, 
@@ -74,9 +75,37 @@ Version: 1.0
 	}
 
 	#filters{
-		height: auto;
+		height: 700px;
 		padding: 3px 1px 3px 1px;
+		/*overflow-y: auto;*/
 	}
+
+
+	div .forscroll{
+		border: 1.5px solid #8D8D8F;
+		/*min-height:auto;*/
+		height:31%;
+		overflow:hidden;
+		overflow-y: auto;
+		/*overflow-y: visible;*/
+		margin-top: 7px;
+		margin-bottom: 7px;
+	}
+
+div ::-webkit-scrollbar {
+    width: 6px; /* ширина для вертикального скролла */
+    /*border-radius: 20em;*/
+    background-color: #98989A;
+}
+
+div ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.title_taxonomy{
+	text-align: center;
+}
 
 	#serch{
 		margin: 4px;
@@ -87,6 +116,15 @@ Version: 1.0
 		height: 50px;
 		margin: 10px;
 	}
+
+#advertising_space_left,
+#announcement_movies,
+#advertising_space_right{
+	border: 1.5px solid #8D8D8F;
+}
+
+
+
 
 
 /*------------------  MENU  -------------*/

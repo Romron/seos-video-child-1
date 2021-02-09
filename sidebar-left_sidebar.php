@@ -15,8 +15,8 @@
 		$list_taxonomys = get_taxonomies($args,$output);
 	?>
 
-<div id="filters">
 	<nav class="menu-films">
+<div id="filters">
 		<div class="menu-films__title">
 			<h3>Подбор фильмов</h3>
 		</div>
@@ -25,32 +25,36 @@
 					if (($taxonomy->label == 'Актёры') || ($taxonomy->label == 'Режиссеры') || ($taxonomy->label == 'Сценаристы') || ($taxonomy->label == 'Директора')){ 
 						continue;}
 			?>
-					<ul class="ul-first-level">	
-						<li class="ul-first-level__li-first-level">
-							<h4 class="ul-first-level__li-first-level__h4">
-								<?  echo($taxonomy->label)?>
-							</h4>
-							<? 
-								$arr_terms = get_terms( $taxonomy->name, array("hide_empty" => false));
-								foreach ($arr_terms as $obj_term) {
-									$link_to_page_terms = get_term_link($obj_term->slug,$obj_term->taxonomy);
-							?>	
-							<ul class="ul-second-level">	 						
-								<li class="ul-second-level__li-second-level">
-									<a href="<?echo($link_to_page_terms)?>"><?echo($obj_term->name)?></a>
-								</li>
-							</ul>
-							<? } ?>
-						</li>
-					</ul>
+					<div class="forscroll">
+						<ul class="ul-first-level">	
+							<li class="ul-first-level__li-first-level">
+								<div class="title_taxonomy">								
+									<h4 class="ul-first-level__li-first-level__h4">
+										<?  echo($taxonomy->label)?>
+									</h4>
+								</div>
+								<? 
+									$arr_terms = get_terms( $taxonomy->name, array("hide_empty" => false));
+									foreach ($arr_terms as $obj_term) {
+										$link_to_page_terms = get_term_link($obj_term->slug,$obj_term->taxonomy);
+								?>	
+								<ul class="ul-second-level">	 						
+									<li class="ul-second-level__li-second-level">
+										<a href="<?echo($link_to_page_terms)?>"><?echo($obj_term->name)?></a>
+									</li>
+								</ul>
+								<? } ?>
+							</li>
+						</ul>
+					</div>
 			<?	} ?>
 			
 
 
 
 
-	</nav>
 </div>
+	</nav>
 
 <div id="advertising_space_left">
 	<!-- <h3>advertising_space</h3> -->

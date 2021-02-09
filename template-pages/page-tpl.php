@@ -71,6 +71,8 @@
 
 		<h4><?php $result = paginate_links( $args ); ?></h4>
 
+
+
 	</nav>
 <?php get_footer(); ?>
 
