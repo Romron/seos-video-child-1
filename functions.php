@@ -623,11 +623,14 @@ function get_rnd_img_post($post){
 	*/
 
 	$arr_media = get_attached_media('image',$post->ID);
+	if (empty($arr_media)) {
+		$result_str = 'http://test-prostofilm-ml-local-host/poster_none.png';
+	}
 	$num_img = 0;
 	foreach ($arr_media as $id_attach => $arr_date_attach) { 
 		$num_img++;
 		if (count($arr_media) == 0) {
-			$result_str = false;
+			$result_str = 'http://test-prostofilm-ml-local-host/poster_none.png';
 			break;
 		}elseif (count($arr_media) == 1) {
 			// echo('<img src="' . wp_get_attachment_image_url($arr_date_attach->ID,'size-for-posters') . '" alt="">');
@@ -652,128 +655,8 @@ function get_rnd_img_post($post){
 
 function pagination_to_page() {
 
-	// global $wp_query;
 
-	// Define custom query parameters
-	// $custom_query_args = array( 			
-	// 		'post_type' => 'any',
-	// 		'posts_per_page' => -1,
-	// 		'posts_per_page' => '5',
-	// 		'paged' => get_query_var('paged') ?: 1 // страница пагинации
-
-	// 	);
-
-	// // Get current page and append to custom query parameters array
-	// $custom_query_args['paged'] = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
-
-	// // Instantiate custom query
-	// $custom_query = new WP_Query( $custom_query_args );
-
-
-	// // Pagination fix
-	// $temp_query = $wp_query;
-	// $wp_query   = NULL;
-	// $wp_query   = $custom_query;
-
-	// // Output custom query loop
-	// if ( $wp_query->have_posts() ) :
-	//     while ( $wp_query->have_posts() ) :
-	//         $wp_query->the_post();
-	//         echo '<pre>='; the_title(); echo '=</pre>';
-
-	//         // Loop output goes here
-	//     endwhile;
-	// endif;
-	// // Reset postdata
-	// wp_reset_postdata();
-
-	// // Custom query loop pagination
-	// // $previous_page_link = previous_posts_link( 'Older Posts' );
-	// // $next_page_link = next_posts_link( 'Newer Posts', $custom_query->max_num_pages );
-
-
-
-
-	$big = 999999999; // уникальное число для замены
-	$args = array(
-		'base'    => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
-		'format'  => '',
-		'current' => max( 1, get_query_var( 'page' ) ),
-		'total'   => $wp_query->max_num_pages,
-		'type' => 'plain',
-		'prev_next' => 'prev_next',
-		'mid_size' => 5,
-		'end_size' => 5,
-	);
-
-	$result = paginate_links( $args );
-	// echo '**** <pre>'; print_r($result); echo '</pre>****';
-
-
-
-
-
-// echo paginate_links( [
-// 	'base'    => user_trailingslashit( wp_normalize_path( get_permalink() .'/%#%/' ) ),
-// 	'current' => max( 1, get_query_var( 'page' ) ),
-// 	'total'   => $query->max_num_pages,
-// ] );
-
-
-
-
-
-	// Reset main query object
-	// $wp_query = NULL;
-	// $wp_query = $temp_quer;
-
-
-
-
-
-	echo $arr_posts;
 }
-
-
-
-
-
-
-
-
-
-
-		// global $wp_query;
-
-		// $big = 999999999; // уникальное число для замены
-
-		// $args = array(
-		// 	'base'    => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
-		// 	'format'  => '',
-		// 	'current' => max( 1, get_query_var('paged') ),
-		// 	'total'   => $wp_query->max_num_pages,
-		// );
-
-		// $result = paginate_links( $args );
-
-		// // удаляем добавку к пагинации для первой страницы
-		// $result = preg_replace( '~/page/1/?([\'"])~', '\1', $result );
-
-
-
-
-
-
-
-
-
-
-// add_action('after_setup_theme','register_menu' );
-// function register_menu(){
-// 	register_nav_menu('menu_left_sibear_top', 'Левый верхний sibear');
-// 	register_nav_menu('menu_left_sibear_button', 'Левый нижний sibear');
-// }
-
 
 
 ?>

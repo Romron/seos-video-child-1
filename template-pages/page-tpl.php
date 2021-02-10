@@ -19,15 +19,33 @@
 
 			global $wp_query;
 
+
+			$current = absint(
+			  max(
+				    1,
+				    get_query_var( 'paged' ) ? get_query_var( 'paged' ) : get_query_var( 'page' )
+				  	)
+			);
+
+
+
 			$args = array(
 				'post_type' => 'films',
-				'posts_per_page' => -1,
 				'posts_per_page' => '10',
-				'paged' => get_query_var('paged') ?: 1 // страница пагинации
+				// 'paged' => get_query_var('paged') ?: 1 // страница пагинации
+				'paged' => $current // страница пагинации
 				);
-			$arr_posts = get_posts($args);
-			foreach ($arr_posts as $post) { 
-				// setup_postdata($post);
+			// $arr_posts = get_posts($args);
+			$wp_query = new WP_Query( $args );
+
+			// foreach ($arr_posts as $post) { 
+			if ( $wp_query->have_posts() ){
+				while ( $wp_query->have_posts() ) {
+					// setup_postdata($post);
+					$wp_query->the_post();
+
+
+
 				$src_img = get_rnd_img_post($post);	
 		?>
 				<article id="post-<?php the_ID(); ?>" class="animate-article">
@@ -35,13 +53,15 @@
 					<div id="box_content">
 						<div class="entry-content">
 							<div class="title_article">
-								<a href="<?echo($post->guid)?>"><h2>333  <?the_title()?>  333</h2></a>
+								<a href="<?echo($post->guid)?>"><h2> <?the_title()?> </h2></a>
 								<img src="<?echo($src_img)?>" alt="">
 							</div>
 						</div><!-- .entry-content -->
 					</div><!-- box_content -->
 				</article><!-- #post-## -->
-		<?   } ?>
+		<? }; 
+			};
+		?>
 
 	</div>
 
@@ -59,7 +79,8 @@
 			$args = array(
 				'base'    => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
 				'format'  => '',
-				'current' => max( 1, get_query_var( 'page' ) ),
+				// 'current' => max( 1, get_query_var( 'page' ) ),
+				'current' => $current,
 				'total'   => $wp_query->max_num_pages,
 				'type' => 'plain',
 				'prev_next' => 'prev_next',
@@ -68,9 +89,12 @@
 			); 
 		?>
 
-
-		<h4><?php $result = paginate_links( $args ); ?></h4>
-
+		<h4>
+			<?php  
+				$result = paginate_links( $args ); 
+				echo $result;
+			?>
+		</h4>
 
 
 	</nav>

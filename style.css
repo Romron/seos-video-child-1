@@ -83,11 +83,10 @@ Version: 1.0
 
 	div .forscroll{
 		border: 1.5px solid #8D8D8F;
-		/*min-height:auto;*/
 		height:31%;
+		margin: -2px;
 		overflow:hidden;
 		overflow-y: auto;
-		/*overflow-y: visible;*/
 		margin-top: 7px;
 		margin-bottom: 7px;
 	}
@@ -166,7 +165,7 @@ div ::-webkit-scrollbar-thumb {
 /*------------------  Пагинация страниц  -------------*/
 
 .pagination_blok{
-	border: 1px solid #01F8BB;
+	/*border: 1px solid #01F8BB;*/
 	width: 100%;
 	padding: auto;
 	text-align: center;

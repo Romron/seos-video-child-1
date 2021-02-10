@@ -49,6 +49,39 @@
 	</aside>
 </div>	
 
+	<nav class="pagination_blok">
+		
+		<?php 	
+			$big = 999999999; // уникальное число для замены
+			$args = array(
+				'base'    => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
+				'format'  => '',
+				// 'current' => max( 1, get_query_var( 'page' ) ),
+				'current' => $current,
+				'total'   => $wp_query->max_num_pages,
+				'type' => 'plain',
+				'prev_next' => 'prev_next',
+				'mid_size' => 5,
+				'end_size' => 5,
+			); 
+		?>
+
+		<h4>
+			<?php  
+				$result = paginate_links( $args ); 
+				echo $result;
+			?>
+		</h4>
+
+
+
+
+	</nav>
+
+
+
+
+
 <?php get_footer(); ?>
 
 
